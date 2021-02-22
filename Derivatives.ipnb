@@ -1,0 +1,101 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "pytorch-warm-up.ipynb",
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bPQRSqkPPXX5"
+      },
+      "source": [
+        "Calculate the derivative"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PAFdRmrsaf-o",
+        "outputId": "66bd45bf-793a-489d-8cda-41771cd310c6"
+      },
+      "source": [
+        "# Practice: Calculate the derivative of y = 2x^3 + x at x = 1\r\n",
+        "x = torch.tensor(1.0,requires_grad = True)\r\n",
+        "y = 2 * x**3 + x\r\n",
+        "y.backward()\r\n",
+        "print(x.grad)"
+      ],
+      "execution_count": 35,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "tensor(7.)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0zqwzfDPhaX0"
+      },
+      "source": [
+        "Partial Derivatives"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WcSKHOPJhFVE",
+        "outputId": "ea70dacc-1fc9-4f25-f3a5-c0fa34f6d55a"
+      },
+      "source": [
+        "# Calculate f(u, v) = v * u + u^2 at u = 1, v = 2\r\n",
+        "u = torch.tensor(1.0,requires_grad=True)\r\n",
+        "v = torch.tensor(2.0,requires_grad=True)\r\n",
+        "f = u * v + u ** 2\r\n",
+        "\r\n",
+        "f.backward()\r\n",
+        "print(\"The partial derivative with respect to u: \", u.grad)"
+      ],
+      "execution_count": 36,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The partial derivative with respect to u:  tensor(4.)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "93-V_r12hx3t"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
